@@ -8,6 +8,20 @@
       "when": 1779198402917,
       "tag": "0000_zippy_the_watchers",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1779356220467,
+      "tag": "0001_groovy_gauntlet",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779358347516,
+      "tag": "0002_panoramic_dark_phoenix",
+      "breakpoints": true
     }
   ]
 }

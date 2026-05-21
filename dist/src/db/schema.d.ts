@@ -1,95 +1,3 @@
-export declare const users: import("drizzle-orm/pg-core").PgTableWithColumns<{
-    name: "users";
-    schema: undefined;
-    columns: {
-        id: import("drizzle-orm/pg-core").PgColumn<{
-            name: "id";
-            tableName: "users";
-            dataType: "string";
-            columnType: "PgUUID";
-            data: string;
-            driverParam: string;
-            notNull: true;
-            hasDefault: true;
-            isPrimaryKey: true;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        spotifyId: import("drizzle-orm/pg-core").PgColumn<{
-            name: "spotify_id";
-            tableName: "users";
-            dataType: "string";
-            columnType: "PgText";
-            data: string;
-            driverParam: string;
-            notNull: true;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: [string, ...string[]];
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        displayName: import("drizzle-orm/pg-core").PgColumn<{
-            name: "display_name";
-            tableName: "users";
-            dataType: "string";
-            columnType: "PgText";
-            data: string;
-            driverParam: string;
-            notNull: false;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: [string, ...string[]];
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        email: import("drizzle-orm/pg-core").PgColumn<{
-            name: "email";
-            tableName: "users";
-            dataType: "string";
-            columnType: "PgText";
-            data: string;
-            driverParam: string;
-            notNull: false;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: [string, ...string[]];
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        createdAt: import("drizzle-orm/pg-core").PgColumn<{
-            name: "created_at";
-            tableName: "users";
-            dataType: "date";
-            columnType: "PgTimestamp";
-            data: Date;
-            driverParam: string;
-            notNull: false;
-            hasDefault: true;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-    };
-    dialect: "pg";
-}>;
 export declare const songs: import("drizzle-orm/pg-core").PgTableWithColumns<{
     name: "songs";
     schema: undefined;
@@ -97,10 +5,10 @@ export declare const songs: import("drizzle-orm/pg-core").PgTableWithColumns<{
         id: import("drizzle-orm/pg-core").PgColumn<{
             name: "id";
             tableName: "songs";
-            dataType: "string";
-            columnType: "PgUUID";
-            data: string;
-            driverParam: string;
+            dataType: "number";
+            columnType: "PgSerial";
+            data: number;
+            driverParam: number;
             notNull: true;
             hasDefault: true;
             isPrimaryKey: true;
@@ -111,8 +19,8 @@ export declare const songs: import("drizzle-orm/pg-core").PgTableWithColumns<{
             identity: undefined;
             generated: undefined;
         }, {}, {}>;
-        spotifyId: import("drizzle-orm/pg-core").PgColumn<{
-            name: "spotify_id";
+        title: import("drizzle-orm/pg-core").PgColumn<{
+            name: "title";
             tableName: "songs";
             dataType: "string";
             columnType: "PgText";
@@ -128,8 +36,8 @@ export declare const songs: import("drizzle-orm/pg-core").PgTableWithColumns<{
             identity: undefined;
             generated: undefined;
         }, {}, {}>;
-        name: import("drizzle-orm/pg-core").PgColumn<{
-            name: "name";
+        artist: import("drizzle-orm/pg-core").PgColumn<{
+            name: "artist";
             tableName: "songs";
             dataType: "string";
             columnType: "PgText";
@@ -145,53 +53,19 @@ export declare const songs: import("drizzle-orm/pg-core").PgTableWithColumns<{
             identity: undefined;
             generated: undefined;
         }, {}, {}>;
-        album: import("drizzle-orm/pg-core").PgColumn<{
-            name: "album";
+        spotifyUrl: import("drizzle-orm/pg-core").PgColumn<{
+            name: "spotify_url";
             tableName: "songs";
             dataType: "string";
             columnType: "PgText";
             data: string;
             driverParam: string;
-            notNull: false;
+            notNull: true;
             hasDefault: false;
             isPrimaryKey: false;
             isAutoincrement: false;
             hasRuntimeDefault: false;
             enumValues: [string, ...string[]];
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        imageUrl: import("drizzle-orm/pg-core").PgColumn<{
-            name: "image_url";
-            tableName: "songs";
-            dataType: "string";
-            columnType: "PgText";
-            data: string;
-            driverParam: string;
-            notNull: false;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: [string, ...string[]];
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        durationMs: import("drizzle-orm/pg-core").PgColumn<{
-            name: "duration_ms";
-            tableName: "songs";
-            dataType: "number";
-            columnType: "PgInteger";
-            data: number;
-            driverParam: string | number;
-            notNull: false;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
             baseColumn: never;
             identity: undefined;
             generated: undefined;
@@ -203,82 +77,7 @@ export declare const songs: import("drizzle-orm/pg-core").PgTableWithColumns<{
             columnType: "PgTimestamp";
             data: Date;
             driverParam: string;
-            notNull: false;
-            hasDefault: true;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        updatedAt: import("drizzle-orm/pg-core").PgColumn<{
-            name: "created_at";
-            tableName: "songs";
-            dataType: "date";
-            columnType: "PgTimestamp";
-            data: Date;
-            driverParam: string;
-            notNull: false;
-            hasDefault: true;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-    };
-    dialect: "pg";
-}>;
-export declare const userSongs: import("drizzle-orm/pg-core").PgTableWithColumns<{
-    name: "user_songs";
-    schema: undefined;
-    columns: {
-        userId: import("drizzle-orm/pg-core").PgColumn<{
-            name: "user_id";
-            tableName: "user_songs";
-            dataType: "string";
-            columnType: "PgUUID";
-            data: string;
-            driverParam: string;
             notNull: true;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        songId: import("drizzle-orm/pg-core").PgColumn<{
-            name: "song_id";
-            tableName: "user_songs";
-            dataType: "string";
-            columnType: "PgUUID";
-            data: string;
-            driverParam: string;
-            notNull: true;
-            hasDefault: false;
-            isPrimaryKey: false;
-            isAutoincrement: false;
-            hasRuntimeDefault: false;
-            enumValues: undefined;
-            baseColumn: never;
-            identity: undefined;
-            generated: undefined;
-        }, {}, {}>;
-        addedAt: import("drizzle-orm/pg-core").PgColumn<{
-            name: "added_at";
-            tableName: "user_songs";
-            dataType: "date";
-            columnType: "PgTimestamp";
-            data: Date;
-            driverParam: string;
-            notNull: false;
             hasDefault: true;
             isPrimaryKey: false;
             isAutoincrement: false;

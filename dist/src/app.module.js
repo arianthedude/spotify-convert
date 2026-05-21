@@ -12,6 +12,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const auth_module_1 = require("./auth/auth.module");
 const config_1 = require("@nestjs/config");
+const spotify_module_1 = require("./spotify/spotify.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -19,6 +20,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             auth_module_1.AuthModule,
+            spotify_module_1.SpotifyModule,
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
             }),

@@ -1,0 +1,1 @@
+ALTER TABLE "songs" ADD COLUMN "artist" text NOT NULL;

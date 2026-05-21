@@ -3,9 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { SpotifyModule } from './spotify/spotify.module';
 @Module({
   imports: [
     AuthModule,
+    SpotifyModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
