@@ -46,7 +46,10 @@ let MelodifyService = MelodifyService_1 = class MelodifyService {
     });
     async syncSongsToMelodify() {
         this.logger.log('🚀 Starting Melodify sync');
-        const allSongs = await this.db.select().from(schema_1.songs);
+        const allSongs = await this.db
+            .select()
+            .from(schema_1.songs)
+            .where((0, drizzle_orm_1.eq)(schema_1.songs.melodifySyncStatus, 'pending'));
         this.logger.log(`📦 Loaded songs: ${allSongs.length}`);
         for (const song of allSongs) {
             try {
@@ -54,7 +57,6 @@ let MelodifyService = MelodifyService_1 = class MelodifyService {
                 this.logger.log(`🔍 Searching: ${song.title} - ${song.artist}`);
                 const match = await this.findBestTrack(song);
                 this.logger.log(`🎯 MATCH RESULT:`);
-                this.logger.log(JSON.stringify(match, null, 2));
                 if (!match?.id) {
                     this.logger.warn(`❌ No valid track id found`);
                     await this.markFailed(song.id, 'No track found');
@@ -109,7 +111,6 @@ let MelodifyService = MelodifyService_1 = class MelodifyService {
             title: best?.track?.title ?? best?.title,
             raw: best,
         };
-        this.logger.log(`🧼 NORMALIZED MATCH: ${JSON.stringify(normalized)}`);
         return normalized;
     }
     async likeTrack(trackId) {

@@ -39,8 +39,11 @@ export class MelodifyService {
   async syncSongsToMelodify() {
     this.logger.log('🚀 Starting Melodify sync');
 
-    const allSongs: Song[] = await this.db.select().from(songs);
-
+const allSongs: Song[] = await this.db
+  .select()
+  .from(songs)
+  .where(eq(songs.melodifySyncStatus, 'pending'));
+  
     this.logger.log(`📦 Loaded songs: ${allSongs.length}`);
 
     for (const song of allSongs) {
@@ -51,7 +54,7 @@ export class MelodifyService {
         const match = await this.findBestTrack(song);
 
         this.logger.log(`🎯 MATCH RESULT:`);
-        this.logger.log(JSON.stringify(match, null, 2));
+        // this.logger.log(JSON.stringify(match, null, 2));
 
         if (!match?.id) {
           this.logger.warn(`❌ No valid track id found`);
@@ -126,7 +129,7 @@ export class MelodifyService {
       raw: best,
     };
 
-    this.logger.log(`🧼 NORMALIZED MATCH: ${JSON.stringify(normalized)}`);
+    // this.logger.log(`🧼 NORMALIZED MATCH: ${JSON.stringify(normalized)}`);
 
     return normalized;
   }
