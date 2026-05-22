@@ -19,8 +19,13 @@ exports.DbModule = DbModule = __decorate([
             {
                 provide: 'DRIZZLE',
                 useFactory: async () => {
+                    console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
                     const pool = new pg_1.Pool({
-                        connectionString: process.env.DATABASE_URL,
+                        host: process.env.DB_HOST,
+                        port: Number(process.env.DB_PORT),
+                        user: process.env.DB_USER,
+                        password: String(process.env.DB_PASSWORD),
+                        database: process.env.DB_NAME,
                     });
                     return (0, node_postgres_1.drizzle)(pool);
                 },
